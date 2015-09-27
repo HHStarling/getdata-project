@@ -60,15 +60,20 @@ smallerDataset$V1.2 <- activityLabels$V2[smallerDataset$V1.2]
 
 charFeatureLabels <- as.character(featureLabels$V2[columnIndices])
 
-# ***IMPORTANT: Need to rename column headings to be in a nicer format
-# (i.e. no white spaces, dashes, brackets, etc.)
 charFeatureLabels[80] <- "subject"
 charFeatureLabels[81] <- "activity"
+
+# IMPORTANT: Need to rename column headings to be in a nicer format
+# (i.e. no white spaces, dashes, brackets, etc.)
+nicerLabels <- gsub("[()]", "", charFeatureLabels)
+nicerLabels <- gsub("[-]", "_", nicerLabels)
+nicerLabels
+
 library(data.table) # needed for setnames()
-setnames(smallerDataset,colnames(smallerDataset),charFeatureLabels)
+setnames(smallerDataset,colnames(smallerDataset),nicerLabels)
 
 # Saving result of Step 4.
-write.table(smallerDataset, "submission/tidyDataset.txt")
+#write.table(smallerDataset, "tidyDataset.txt")
 
 # ----------------------------------------------------------------------
 # 5. From the data set in step 4, creates a second, independent tidy
@@ -76,21 +81,13 @@ write.table(smallerDataset, "submission/tidyDataset.txt")
 #    each subject.
 # ----------------------------------------------------------------------
 
-# compute mean for each variable, grouped by activity and subject
-# E.g. AVG1,  AVG2,  AVG3, ..., AVG79, subject, activity
-#      0.123, 0.341, 0.546, ..., .125, 1,       WALKING
-#      0.123, 0.341, 0.546, ..., .125, 1,       STANDING
-#      ....., ....., ....., ..., ...., .,       ........
-#      ....., ....., ....., ..., ...., .,       ........ 
-#      0.123, 0.341, 0.546, ..., .125, 2,       WALKING
-#      0.123, 0.341, 0.546, ..., .125, 2,       STANDING
-
 library(dplyr)
 # google search: "r stackoverflow mean of columns grouped in data frame""
 # ref: http://stackoverflow.com/questions/21982987/mean-per-group-in-a-data-frame
 result <- smallerDataset %>%
-  group_by(activity, subject) %>%
+  #group_by(activity, subject) %>%
+  group_by(subject, activity) %>%
   summarise_each(funs(mean(., na.rm=TRUE)), -activity, -subject)
 
 # Saving result of Step 5.
-write.table(result, "submission/tidyDatasetSummary.txt")
+write.table(result, "tidyDatasetSummary.txt", row.names = FALSE)
