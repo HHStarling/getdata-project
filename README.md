@@ -6,7 +6,7 @@ The repository contains the following files: README.md, CodeBook.md, and run_ana
 
 This file describes the dataset and variables. See this file for a detailed description of the project objectives also.
 
-**run_analysis.R**
+**2. run_analysis.R**
 
 This is a script written in the R programming language.
 
