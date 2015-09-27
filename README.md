@@ -26,4 +26,4 @@ To use the script, you need to follow these instructions:
 source("run_analysis.R")
 ```
 
-The script will product a summary of the tidy dataset, and save the ouput to .txt file called **tidyDatasetSummary.txt**
+The script will product a summary of the tidy dataset, and save the ouput to a .txt file called **tidyDatasetSummary.txt**
