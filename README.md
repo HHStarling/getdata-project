@@ -20,8 +20,10 @@ To use the script, you need to follow these instructions:
 3. Place the run_analysis.R script in the same directory that contains the "UCI HAR Dataset" folder.
 4. Open your favourite R programming console or IDE (such as RStudio)
 5. Use **setwd()** command in R to change the working directory to the directory that contains the *UCI HAR Dataset* folder and the *run_analysis.R* script
-5. Type the following command
+6. Type the following command
+
 ```
 source("run_analysis.R")
 ```
-6. The script will product a summary of the tidy dataset, and save the ouput to .txt file called **tidyDatasetSummary.txt**
+
+The script will product a summary of the tidy dataset, and save the ouput to .txt file called **tidyDatasetSummary.txt**
