@@ -19,7 +19,7 @@ To use the script, you need to follow these instructions:
 3. Extract the .zip file (You should now have a directory called "UCI HAR Dataset")
 3. Place the run_analysis.R script in the same directory that contains the "UCI HAR Dataset" folder.
 4. Open your favourite R programming console or IDE (such as RStudio)
-5. Use **setwd()** command in R to change the working directory to the directory that contains the *UCI HAR Dataset* folder and the *run_analysis.R* script
+5. Use the **setwd()** command in R to change the working directory to the directory that contains the *UCI HAR Dataset* folder and the *run_analysis.R* script
 6. Type the following command
 
 ```
